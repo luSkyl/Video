@@ -1,14 +1,18 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/userLogin/login",
+    "pages/mine/mine",
+    "pages/chooseBgm/chooseBgm",
+    "pages/searchVideo/searchVideo"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "如风视频",
     "navigationBarTextStyle": "black"
   },
+  "debug" : true,
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

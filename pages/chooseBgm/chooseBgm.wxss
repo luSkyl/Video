@@ -5,7 +5,9 @@ page {
 .container {
     display: flex;
     margin-top: 20rpx; 
-     justify-content: space-around;   
+    justify-content: space-around;
+    padding: 0;
+    flex-direction: row;
 }
 
 .submitBtn {

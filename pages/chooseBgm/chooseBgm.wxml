@@ -6,8 +6,8 @@
 
           <block wx:for="{{bgmList}}">
             <view class='container'>
-          <audio name="{{item.name}}" author="{{item.author}}" src="{{serverUrl}}{{item.path}}" style='width:300px' id="myAudio" controls loop></audio>
-          <radio style='margin-top:20px;' value='{{item.id}}'></radio>
+          <audio name="{{item.name}}" author="{{item.author}}" src="{{serverUrl}}{{item.path}}" style='width:320px' id="myAudio" controls loop></audio>
+          <radio  value='{{item.id}}'></radio>
         </view>
           </block>
 

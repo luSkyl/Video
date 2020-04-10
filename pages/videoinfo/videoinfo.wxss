@@ -9,6 +9,9 @@ page {
     margin-left: 50rpx;
     margin-right: 50rpx;
     justify-content: space-between;
+    padding: 0;
+    flex-direction: row;
+    height: auto;
 }
 
 .container-me {
@@ -98,8 +101,8 @@ page {
 
 .comments-all {
     /* margin-top: 10px; */
-      margin-bottom: 10px;  
-      /* border-bottom: solid 1px gray;   */
+    margin-bottom: 10px;
+    /* border-bottom: solid 1px gray;   */
     background-color: #141414;
     color: #e8e8e8;
 }
@@ -111,14 +114,14 @@ page {
     margin-left: 5px;
 }
 
-.container-comments{
+.container-comments {
     display: flex;
-    
+
     /* margin-top: 20rpx;
     margin-left: 50rpx;
     margin-right: 50rpx;
     justify-content: space-between; */
-    
+
 }
 
 
@@ -126,15 +129,15 @@ page {
     margin-left: 10px;
 }
 
-.nickname-lbl{
+.nickname-lbl {
     color: #a1a1a1;
 }
 
-.date-lbl{
+.date-lbl {
     color: #a1a1a1;
 }
 
-.comments-content{
+.comments-content {
     margin-left: 5px;
     margin-right: 5px;
     /* margin-bottom: 10px; */

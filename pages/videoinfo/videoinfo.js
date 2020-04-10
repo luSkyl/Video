@@ -13,8 +13,8 @@ Page({
 
 
     commentsPage: 1,
-    commentsTotalPage:1,
-    commentsList:[],
+    commentsTotalPage: 1,
+    commentsList: [],
 
 
     placeholder: "说点什么..."
@@ -22,7 +22,7 @@ Page({
 
   videoCtx: {},
 
-  onLoad: function (params) {    
+  onLoad: function (params) {
     var me = this;
     me.videoCtx = wx.createVideoContext("myVideo", me);
 
@@ -52,7 +52,7 @@ Page({
     wx.request({
       url: serverUrl + '/user/queryPublisher?loginUserId=' + loginUserId + "&videoId=" + videoInfo.id + "&publishUserId=" + videoInfo.userId,
       method: 'POST',
-      success: function(res) {
+      success: function (res) {
         console.log(res.data);
 
         var publisher = res.data.data.publisher;
@@ -121,7 +121,7 @@ Page({
     } else {
       videoUtil.uploadVideo();
     }
-    
+
   },
 
   showIndex: function () {
@@ -154,7 +154,7 @@ Page({
         url: '../userLogin/login',
       })
     } else {
-      
+
       var userLikeVideo = me.data.userLikeVideo;
       var url = '/video/userLike?userId=' + user.id + '&videoId=' + videoInfo.id + '&videoCreaterId=' + videoInfo.userId;
       if (userLikeVideo) {
@@ -173,7 +173,7 @@ Page({
           'headerUserId': user.id,
           'headerUserToken': user.userToken
         },
-        success:function(res) {
+        success: function (res) {
           wx.hideLoading();
           me.setData({
             userLikeVideo: !userLikeVideo
@@ -185,13 +185,13 @@ Page({
     }
   },
 
-  shareMe: function() {
+  shareMe: function () {
     var me = this;
     var user = app.getGlobalUserInfo();
 
     wx.showActionSheet({
       itemList: ['下载到本地', '举报用户', '分享到朋友圈', '分享到QQ空间', '分享到微博'],
-      success: function(res) {
+      success: function (res) {
         console.log(res.tapIndex);
         if (res.tapIndex == 0) {
           // 下载
@@ -207,7 +207,7 @@ Page({
 
                 wx.saveVideoToPhotosAlbum({
                   filePath: res.tempFilePath,
-                  success:function(res) {
+                  success: function (res) {
                     console.log(res.errMsg)
                     wx.hideLoading();
                   }
@@ -232,17 +232,17 @@ Page({
               url: '../report/report?videoId=' + videoId + "&publishUserId=" + publishUserId
             })
           }
-        } else{
+        } else {
           wx.showToast({
             title: '官方暂未开放...',
           })
-        } 
+        }
       }
     })
   },
 
   onShareAppMessage: function (res) {
-    
+
     var me = this;
     var videoInfo = me.data.videoInfo;
 
@@ -253,17 +253,17 @@ Page({
   },
 
 
-  leaveComment: function() {
+  leaveComment: function () {
     this.setData({
       commentFocus: true
     });
   },
 
-  replyFocus: function(e) {
+  replyFocus: function (e) {
     var fatherCommentId = e.currentTarget.dataset.fathercommentid;
     var toUserId = e.currentTarget.dataset.touserid;
     var toNickname = e.currentTarget.dataset.tonickname;
- 
+
     this.setData({
       placeholder: "回复  " + toNickname,
       replyFatherCommentId: fatherCommentId,
@@ -272,7 +272,7 @@ Page({
     });
   },
 
-  saveComment:function(e) {
+  saveComment: function (e) {
     var me = this;
     var content = e.detail.value;
 
@@ -305,7 +305,7 @@ Page({
           videoId: me.data.videoInfo.id,
           comment: content
         },
-        success: function(res) {
+        success: function (res) {
           console.log(res.data)
           wx.hideLoading();
 
@@ -320,41 +320,41 @@ Page({
     }
   },
 
-// commentsPage: 1,
-//   commentsTotalPage: 1,
-//   commentsList: []
+  // commentsPage: 1,
+  //   commentsTotalPage: 1,
+  //   commentsList: []
 
-    getCommentsList: function(page) {
-      var me = this;
+  getCommentsList: function (page) {
+    var me = this;
 
-      var videoId = me.data.videoInfo.id;
+    var videoId = me.data.videoInfo.id;
 
-      wx.request({
-        url: app.serverUrl + '/video/getVideoComments?videoId=' + videoId + "&page=" + page + "&pageSize=5",
-        method: "POST",
-        success: function(res) {
-          console.log(res.data);
+    wx.request({
+      url: app.serverUrl + '/video/getVideoComments?videoId=' + videoId + "&page=" + page + "&pageSize=5",
+      method: "POST",
+      success: function (res) {
+        console.log(res.data);
 
-          var commentsList = res.data.data.rows;
-          var newCommentsList = me.data.commentsList;
+        var commentsList = res.data.data.rows;
+        var newCommentsList = me.data.commentsList;
 
-          me.setData({
-            commentsList: newCommentsList.concat(commentsList),
-            commentsPage: page,
-            commentsTotalPage: res.data.data.total
-          });
-        }
-      })
-    },
-
-    onReachBottom: function() {
-      var me = this;
-      var currentPage = me.data.commentsPage;
-      var totalPage = me.data.commentsTotalPage;
-      if (currentPage === totalPage) {
-        return;
+        me.setData({
+          commentsList: newCommentsList.concat(commentsList),
+          commentsPage: page,
+          commentsTotalPage: res.data.data.total
+        });
       }
-      var page = currentPage + 1;
-      me.getCommentsList(page);
+    })
+  },
+
+  onReachBottom: function () {
+    var me = this;
+    var currentPage = me.data.commentsPage;
+    var totalPage = me.data.commentsTotalPage;
+    if (currentPage === totalPage) {
+      return;
     }
+    var page = currentPage + 1;
+    me.getCommentsList(page);
+  }
 })

@@ -4,8 +4,8 @@ Page({
   data: {
     // 用于分页的属性
     totalPage: 1,
-    page:1,
-    videoList:[],
+    page: 1,
+    videoList: [],
 
     screenWidth: 350,
     serverUrl: "",
@@ -78,12 +78,12 @@ Page({
     })
   },
 
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
     this.getAllVideoList(1, 0);
   },
 
-  onReachBottom:function() {
+  onReachBottom: function () {
     var me = this;
     var currentPage = me.data.page;
     var totalPage = me.data.totalPage;
@@ -102,7 +102,7 @@ Page({
     me.getAllVideoList(page, 0);
   },
 
-  showVideoInfo: function(e) {
+  showVideoInfo: function (e) {
     var me = this;
     var videoList = me.data.videoList;
     var arrindex = e.target.dataset.arrindex;

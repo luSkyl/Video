@@ -5,11 +5,11 @@
 .cover {
     width: 100%;
     height: 400rpx;
-    display: block; 
+    display: block;
 }
 
-.back-img{
-    display: block; 
+.back-img {
+    display: block;
     background-color: black;
 }
 
@@ -30,7 +30,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
     margin-left: 10px;
 }
 

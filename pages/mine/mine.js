@@ -39,8 +39,9 @@ Page({
     // fixme 修改原有的全局对象为本地缓存
     var user = app.getGlobalUserInfo();
     var userId = user.id;
-
+   //当调用自己的时候 params 为空
     var publisherId = params.publisherId;
+    
     if (publisherId != null && publisherId != '' && publisherId != undefined) {
       userId = publisherId;
       me.setData({
@@ -60,8 +61,11 @@ Page({
     var serverUrl = app.serverUrl;
     // 调用后端
     wx.request({
-      url: serverUrl + '/user/query?userId=' + userId + "&fanId=" + user.id,
+      url: serverUrl + '/user/query?userId='+userId+'&fanId='+user.id,
       method: "POST",
+      data:{
+        userId:userId
+      },
       header: {
         'content-type': 'application/json', // 默认值
         'headerUserId': user.id,
@@ -258,7 +262,6 @@ Page({
     // videoUtil.uploadVideo();
     // 以下是原来的代码，不删除，便于参照
     var me = this;
-
     wx.chooseVideo({
       sourceType: ['album'],
       success: function (res) {
@@ -269,10 +272,9 @@ Page({
         var tmpWidth = res.width;
         var tmpVideoUrl = res.tempFilePath;
         var tmpCoverUrl = res.thumbTempFilePath;
-
-        if (duration > 11) {
+        if (duration > 60) {
           wx.showToast({
-            title: '视频长度不能超过10秒...',
+            title: '视频长度不能超过1分钟...',
             icon: "none",
             duration: 2500
           })

@@ -1,4 +1,3 @@
-
 function uploadVideo() {
   var me = this;
 
@@ -28,12 +27,11 @@ function uploadVideo() {
       } else {
         // 打开选择bgm的页面
         wx.navigateTo({
-          url: '../chooseBgm/chooseBgm?duration=' + duration
-          + "&tmpHeight=" + tmpHeight
-          + "&tmpWidth=" + tmpWidth
-          + "&tmpVideoUrl=" + tmpVideoUrl
-          + "&tmpCoverUrl=" + tmpCoverUrl
-          ,
+          url: '../chooseBgm/chooseBgm?duration=' + duration +
+            "&tmpHeight=" + tmpHeight +
+            "&tmpWidth=" + tmpWidth +
+            "&tmpVideoUrl=" + tmpVideoUrl +
+            "&tmpCoverUrl=" + tmpCoverUrl,
         })
       }
 

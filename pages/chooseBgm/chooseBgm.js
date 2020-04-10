@@ -20,7 +20,7 @@ Page({
       });
       var serverUrl = app.serverUrl;
       var user = app.getGlobalUserInfo();
-  
+    
       // 调用后端
       wx.request({
         url: serverUrl + '/bgm/list',

@@ -49,4 +49,6 @@ page {
 .goLoginBtn {
     width: 80%;
     margin-top: 15px;
+    color: white;
+    background-color: #E64340;
 }

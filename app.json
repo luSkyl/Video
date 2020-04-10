@@ -4,7 +4,8 @@
     "pages/userLogin/login",
     "pages/mine/mine",
     "pages/chooseBgm/chooseBgm",
-    "pages/searchVideo/searchVideo"
+    "pages/searchVideo/searchVideo",
+    "pages/videoinfo/videoinfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
